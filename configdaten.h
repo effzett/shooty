@@ -39,7 +39,6 @@ public:
     bool m_circleCEP95;
     bool m_circleRinge;
 
-
     QString m_regName;
     QString m_regSerial;
     QString m_version;

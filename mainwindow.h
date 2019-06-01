@@ -93,6 +93,10 @@ private slots:
     void makePDF(QString fn);
     void on_toolButtonViewPDF_clicked();
 
+#ifdef Q_OS_WIN
+    void on_actionBeenden_triggered();
+#endif
+
 private:
     void loadSettings();
     void saveSettings();

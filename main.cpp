@@ -11,7 +11,9 @@ int main(int argc, char *argv[])
     a.setApplicationName("Shooty");
     MainWindow w;
 
-//    QTimer::singleShot(0,&w,SLOT(fromCommandLine()));
+#ifdef Q_OS_WIN
+    QTimer::singleShot(0,&w,SLOT(fromCommandLine()));
+#endif
 
     w.show();
 

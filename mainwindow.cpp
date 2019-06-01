@@ -673,9 +673,9 @@ void MainWindow::on_actionSchootyBild_drucken_triggered()
 
 void MainWindow::on_action_ber_Shooty_triggered()
 {
+    QString ver = "Version";
     QString txt = "Dies ist Shooty Version " + m_version;
-
-        QMessageBox::about(this,txt,txt);
+    QMessageBox::about(this,ver,txt);
 }
 
 void MainWindow::setDistance()
@@ -1177,9 +1177,21 @@ void MainWindow::on_toolButtonViewPDF_clicked()
     fn.setFileTemplate(QDir::tempPath() + "XXXXXX.pdf");
     if(fn.open()){
         makePDF(fn.fileName());
+#ifdef Q_OS_WIN
+        QUrl url(fn.fileName() ,QUrl::TolerantMode);
+#else
         QUrl url("file://" + fn.fileName() ,QUrl::TolerantMode);
+#endif
         qDebug() << url.toString();
         QDesktopServices::openUrl(url);
     }
 }
+
+#ifdef Q_OS_WIN
+void MainWindow::on_actionBeenden_triggered()
+{
+    saveSettings();
+    QApplication::quit();
+}
+#endif
 
