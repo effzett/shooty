@@ -1,5 +1,9 @@
 #include "serial.h"
+#ifdef Q_OS_WIN
+#include "ui_serialwin.h"
+#else
 #include "ui_serial.h"
+#endif
 #include <configdaten.h>
 #include <QCryptographicHash>
 

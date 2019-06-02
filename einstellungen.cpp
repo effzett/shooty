@@ -1,5 +1,9 @@
 #include "einstellungen.h"
+#ifdef Q_OS_WIN
+#include "ui_einstellungenwin.h"
+#else
 #include "ui_einstellungen.h"
+#endif
 #include <mainwindow.h>
 
 Einstellungen::Einstellungen(QWidget *parent) :
