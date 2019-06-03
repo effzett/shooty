@@ -1,5 +1,9 @@
 #include "mainwindow.h"
+#ifdef Q_OS_WIN
+#include "ui_mainwindowwin.h"
+#else
 #include "ui_mainwindow.h"
+#endif
 #include <session.h>
 #include <serial.h>
 #include <qcolor.h>

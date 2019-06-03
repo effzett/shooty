@@ -5,6 +5,9 @@
 
 int main(int argc, char *argv[])
 {
+#ifdef Q_OS_WIN
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
     QApplication a(argc, argv);
     a.setOrganizationName("Zenmeister");
     a.setOrganizationDomain("Zenmeister");
