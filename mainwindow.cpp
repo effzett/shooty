@@ -950,14 +950,8 @@ void MainWindow::on_actionSichern_unter_triggered()
 
 }
 
-void MainWindow::on_actionOpen_Session_triggered()
-{
-    checkRegistration();
+void MainWindow::openSession(QString fileName){
     QFile *file;
-    QString fileName = QFileDialog::getOpenFileName(this,
-                                                    tr("Öffne Shooty Session"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
-                                                    tr("Shooty Datei (*.shf);;All Files (*)"));
-
     if (fileName.isEmpty()){
         return;
     }
@@ -1026,6 +1020,17 @@ void MainWindow::on_actionOpen_Session_triggered()
     ui->graphicsView->setShotsFromSessionOpen(liste);
     m_sessionTitle = m_fileName;
     QWidget::setWindowTitle(m_sessionTitle);
+}
+
+void MainWindow::on_actionOpen_Session_triggered()
+{
+    checkRegistration();
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Öffne Shooty Session"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
+                                                    tr("Shooty Datei (*.shf);;All Files (*)"));
+
+    openSession(fileName);
+
 }
 
 void MainWindow::on_actionNeue_Session_triggered()
