@@ -50,16 +50,13 @@ macx: {
 FORMS    += mainwindow.ui \
     einstellungen.ui \
     serial.ui
-    message("Using macx")
 }
 
 win32: {
 FORMS    += mainwindowwin.ui \
     einstellungenwin.ui \
     serialwin.ui
-    message("Using win32")
 }
-
 
 RESOURCES += \
     resources.qrc
@@ -68,4 +65,3 @@ RESOURCES += \
 DISTFILES += \
     shooty.ico \
     shooty.rc
-

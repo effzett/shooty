@@ -72,7 +72,7 @@
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lädt ein neues Bild&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
-          <string>Bild laden...</string>
+          <string>Bild laden...(⌘B)</string>
          </property>
          <property name="checkable">
           <bool>false</bool>
@@ -576,7 +576,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>View PDF</string>
+          <string>Display PDF (⌘D)</string>
          </property>
         </widget>
        </widget>
@@ -1237,8 +1237,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>302</width>
-              <height>403</height>
+              <width>316</width>
+              <height>407</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_3">
@@ -2021,7 +2021,7 @@
      <x>0</x>
      <y>0</y>
      <width>1059</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuShooty">
@@ -2054,7 +2054,7 @@
    </widget>
    <widget class="QMenu" name="menuAnsicht">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="tearOffEnabled">
      <bool>false</bool>
@@ -2062,6 +2062,7 @@
     <property name="title">
      <string>Ansicht</string>
     </property>
+    <addaction name="actionDisplay_PDF"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
@@ -2214,6 +2215,14 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionDisplay_PDF">
+   <property name="text">
+    <string>Display PDF</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
    </property>
   </action>
  </widget>

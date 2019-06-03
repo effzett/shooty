@@ -1199,3 +1199,8 @@ void MainWindow::on_actionBeenden_triggered()
 }
 #endif
 
+
+void MainWindow::on_actionView_PDF_triggered()
+{
+    on_toolButtonViewPDF_clicked();
+}
