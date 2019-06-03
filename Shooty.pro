@@ -25,15 +25,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    myqgraphicsview.cpp \
-    centertarget.cpp \
-    statistic.cpp \
-    createpdf.cpp \
-    einstellungen.cpp \
-    configdaten.cpp \
-    pdfdaten.cpp \
-    session.cpp \
-    serial.cpp
+        myqgraphicsview.cpp \
+        centertarget.cpp \
+        statistic.cpp \
+        createpdf.cpp \
+        einstellungen.cpp \
+        configdaten.cpp \
+        pdfdaten.cpp \
+        session.cpp \
+        serial.cpp
 
 HEADERS  += mainwindow.h \
     myqgraphicsview.h \
@@ -48,14 +48,16 @@ HEADERS  += mainwindow.h \
 
 macx: {
 FORMS    += mainwindow.ui \
-    einstellungen.ui \
-    serial.ui
+            einstellungen.ui \
+            serial.ui
+    message("MacOS Architektur")
 }
 
 win32: {
 FORMS    += mainwindowwin.ui \
-    einstellungenwin.ui \
-    serialwin.ui
+            einstellungenwin.ui \
+            serialwin.ui
+    message("Win32 Architektur")
 }
 
 RESOURCES += \

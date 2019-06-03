@@ -576,7 +576,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>Display PDF (⌘D)</string>
+          <string>Display PDF (Alt+D)</string>
          </property>
         </widget>
        </widget>
@@ -1237,8 +1237,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>316</width>
-              <height>407</height>
+              <width>302</width>
+              <height>403</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_3">
@@ -2021,7 +2021,7 @@
      <x>0</x>
      <y>0</y>
      <width>1059</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuShooty">
@@ -2222,7 +2222,7 @@
     <string>Display PDF</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+D</string>
+    <string>Alt+D</string>
    </property>
   </action>
  </widget>
