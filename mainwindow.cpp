@@ -1203,3 +1203,4 @@ void MainWindow::on_actionDisplay_PDF_triggered()
 {
     on_toolButtonViewPDF_clicked();
 }
+
