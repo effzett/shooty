@@ -626,7 +626,7 @@
            <x>0</x>
            <y>110</y>
            <width>311</width>
-           <height>23</height>
+           <height>24</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="formLayout_3">
@@ -714,7 +714,7 @@
            <x>0</x>
            <y>140</y>
            <width>311</width>
-           <height>23</height>
+           <height>24</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="formLayout_4">
@@ -816,7 +816,7 @@
            <x>0</x>
            <y>50</y>
            <width>311</width>
-           <height>23</height>
+           <height>24</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="formLayout_6">
@@ -854,7 +854,7 @@
            <x>0</x>
            <y>20</y>
            <width>311</width>
-           <height>23</height>
+           <height>24</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="formLayout_2">
@@ -901,7 +901,7 @@
            <x>0</x>
            <y>80</y>
            <width>311</width>
-           <height>23</height>
+           <height>24</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="formLayout_9">
@@ -942,7 +942,7 @@
            <x>0</x>
            <y>170</y>
            <width>311</width>
-           <height>22</height>
+           <height>24</height>
           </rect>
          </property>
          <layout class="QFormLayout" name="formLayout_10">
@@ -1231,8 +1231,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>316</width>
-              <height>476</height>
+              <width>335</width>
+              <height>518</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_3">
@@ -2015,7 +2015,7 @@
      <x>0</x>
      <y>0</y>
      <width>1062</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuShooty">
@@ -2048,7 +2048,7 @@
     <property name="title">
      <string>Ansicht</string>
     </property>
-    <addaction name="actionView_PDF"/>
+    <addaction name="actionDisplayPDF"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
@@ -2206,12 +2206,9 @@
     <string>Meta+Q</string>
    </property>
   </action>
-  <action name="actionView_PDF">
+  <action name="actionDisplayPDF">
    <property name="text">
-    <string>Display PDF</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+D</string>
+    <string>DisplayPDF</string>
    </property>
   </action>
  </widget>

@@ -92,12 +92,12 @@ private slots:
     void on_actionSichern_triggered();
     void makePDF(QString fn);
     void on_toolButtonViewPDF_clicked();
+    void on_actionDisplay_PDF_triggered();
 
 #ifdef Q_OS_WIN
     void on_actionBeenden_triggered();
 #endif
 
-    void on_actionView_PDF_triggered();
 
 private:
     void loadSettings();
