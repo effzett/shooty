@@ -1196,16 +1196,25 @@ void MainWindow::on_toolButtonViewPDF_clicked()
     }
 }
 
+void MainWindow::on_actionDisplay_PDF_triggered()
+{
+    on_toolButtonViewPDF_clicked();
+}
+
 #ifdef Q_OS_WIN
 void MainWindow::on_actionBeenden_triggered()
 {
     saveSettings();
     QApplication::quit();
 }
-#endif
 
-void MainWindow::on_actionDisplay_PDF_triggered()
-{
-    on_toolButtonViewPDF_clicked();
+void MainWindow::fromCommandLine(){
+    QStringList argumentList = QCoreApplication::arguments();
+
+    if(argumentList.length() != 2 ){
+        return;
+    }
+    QString fn = argumentList.at(1);
+    openSession(fn);
 }
-
+#endif

@@ -97,6 +97,7 @@ private slots:
 
 #ifdef Q_OS_WIN
     void on_actionBeenden_triggered();
+    void fromCommandLine();
 #endif
 
 
