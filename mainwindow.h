@@ -97,6 +97,8 @@ private slots:
     void on_actionBeenden_triggered();
 #endif
 
+    void on_actionView_PDF_triggered();
+
 private:
     void loadSettings();
     void saveSettings();

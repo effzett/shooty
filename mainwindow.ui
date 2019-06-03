@@ -72,7 +72,7 @@
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lädt ein neues Bild&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
-          <string>Bild laden...</string>
+          <string>Bild laden...(⌘B)</string>
          </property>
          <property name="checkable">
           <bool>false</bool>
@@ -575,8 +575,17 @@
            <height>22</height>
           </rect>
          </property>
+         <property name="accessibleName">
+          <string/>
+         </property>
          <property name="text">
-          <string>View PDF</string>
+          <string>Display PDF (⌘D)</string>
+         </property>
+         <property name="shortcut">
+          <string>Ctrl+D</string>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonIconOnly</enum>
          </property>
         </widget>
        </widget>
@@ -2039,6 +2048,7 @@
     <property name="title">
      <string>Ansicht</string>
     </property>
+    <addaction name="actionView_PDF"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
@@ -2194,6 +2204,14 @@
    </property>
    <property name="shortcut">
     <string>Meta+Q</string>
+   </property>
+  </action>
+  <action name="actionView_PDF">
+   <property name="text">
+    <string>Display PDF</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
    </property>
   </action>
  </widget>
