@@ -47,7 +47,7 @@ FORMS    += mainwindow.ui \
 
 ICON = shooty1.icns
 
-#QMAKE_INFO_PLIST += myShooty.plist
+QMAKE_INFO_PLIST += myShooty.plist
 }
 
 win32: {
