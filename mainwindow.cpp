@@ -704,6 +704,10 @@ void MainWindow::setCaliberList()
     m_caliberList.append(4.56);    //.38sp
     m_caliberList.append(4.57);    //.38sp WC
     m_caliberList.append(4.56);    //.356 Mag
+    m_caliberList.append(5.48);    //.44 Rem. Mag.
+    m_caliberList.append(5.74);    //.45 Auto
+    m_caliberList.append(5.75);    //.454 Casull
+    m_caliberList.append(5.75);    //.460 S&W Mag.
 }
 
 void MainWindow::setCaliber()

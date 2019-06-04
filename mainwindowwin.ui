@@ -765,6 +765,31 @@
               <string>.357 Magnum</string>
              </property>
             </item>
+            <item>
+             <property name="text">
+              <string>.44 Rem.Mag.</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>.45 Auto</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>.45 Colt</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>.454 Casull</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>.460 S&amp;W Mag.</string>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>
@@ -1237,8 +1262,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>302</width>
-              <height>403</height>
+              <width>316</width>
+              <height>407</height>
              </rect>
             </property>
             <layout class="QGridLayout" name="gridLayout_3">
@@ -2021,7 +2046,7 @@
      <x>0</x>
      <y>0</y>
      <width>1059</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuShooty">

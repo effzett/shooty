@@ -774,6 +774,31 @@
               <string>.357 Magnum</string>
              </property>
             </item>
+            <item>
+             <property name="text">
+              <string>.44 Rem. Mag.</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>.45 Auto</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>.45 Colt</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>.454 Casull</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>.460 S&amp;W Mag.</string>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>
