@@ -27,6 +27,7 @@
 #include <statistic.h>
 #include <serial.h>
 #include <configdaten.h>
+#include <myapplication.h>
 
 namespace Ui {
 class MainWindow;
@@ -43,6 +44,11 @@ public:
 
 signals:
     void deleteCalibrationLine();
+
+#ifdef Q_OS_MAC
+public slots:
+    void connectOpenWithApp(MyApplication *app);
+#endif
 
 private slots:
 

@@ -52,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->comboBoxDistance,SIGNAL(currentTextChanged(QString)),this,SLOT(setDistance()));
     connect(ui->comboBox_Kaliber,SIGNAL(currentIndexChanged(int)),this,SLOT(setCaliber()));
 
+
 }
 
 void MainWindow::setGUIValues(){
@@ -1221,4 +1222,13 @@ void MainWindow::fromCommandLine(){
     QString fn = argumentList.at(1);
     openSession(fn);
 }
+#endif
+
+#ifdef Q_OS_MAC
+void MainWindow::connectOpenWithApp(MyApplication *app){
+
+    connect(app, SIGNAL(fileReady(QString)),this,SLOT(openSession(QString)));
+    //connect(app, &MyApplication::fileReady,[this] (QString fileName){openSession(fileName);});
+}
+
 #endif

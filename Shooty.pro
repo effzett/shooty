@@ -37,7 +37,8 @@ HEADERS  += mainwindow.h \
     configdaten.h \
     pdfdaten.h \
     session.h \
-    serial.h
+    serial.h \
+    myapplication.h
 
 macx: {
 FORMS    += mainwindow.ui \
