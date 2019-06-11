@@ -52,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->comboBoxDistance,SIGNAL(currentTextChanged(QString)),this,SLOT(setDistance()));
     connect(ui->comboBox_Kaliber,SIGNAL(currentIndexChanged(int)),this,SLOT(setCaliber()));
 
+
 }
 
 void MainWindow::setGUIValues(){
@@ -704,6 +705,10 @@ void MainWindow::setCaliberList()
     m_caliberList.append(4.56);    //.38sp
     m_caliberList.append(4.57);    //.38sp WC
     m_caliberList.append(4.56);    //.356 Mag
+    m_caliberList.append(5.48);    //.44 Rem. Mag.
+    m_caliberList.append(5.74);    //.45 Auto
+    m_caliberList.append(5.75);    //.454 Casull
+    m_caliberList.append(5.75);    //.460 S&W Mag.
 }
 
 void MainWindow::setCaliber()
@@ -950,14 +955,8 @@ void MainWindow::on_actionSichern_unter_triggered()
 
 }
 
-void MainWindow::on_actionOpen_Session_triggered()
-{
-    checkRegistration();
+void MainWindow::openSession(QString fileName){
     QFile *file;
-    QString fileName = QFileDialog::getOpenFileName(this,
-                                                    tr("Öffne Shooty Session"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
-                                                    tr("Shooty Datei (*.shf);;All Files (*)"));
-
     if (fileName.isEmpty()){
         return;
     }
@@ -1026,6 +1025,17 @@ void MainWindow::on_actionOpen_Session_triggered()
     ui->graphicsView->setShotsFromSessionOpen(liste);
     m_sessionTitle = m_fileName;
     QWidget::setWindowTitle(m_sessionTitle);
+}
+
+void MainWindow::on_actionOpen_Session_triggered()
+{
+    checkRegistration();
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Öffne Shooty Session"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
+                                                    tr("Shooty Datei (*.shf);;All Files (*)"));
+
+    openSession(fileName);
+
 }
 
 void MainWindow::on_actionNeue_Session_triggered()
@@ -1191,16 +1201,34 @@ void MainWindow::on_toolButtonViewPDF_clicked()
     }
 }
 
+void MainWindow::on_actionDisplay_PDF_triggered()
+{
+    on_toolButtonViewPDF_clicked();
+}
+
 #ifdef Q_OS_WIN
 void MainWindow::on_actionBeenden_triggered()
 {
     saveSettings();
     QApplication::quit();
 }
+
+void MainWindow::fromCommandLine(){
+    QStringList argumentList = QCoreApplication::arguments();
+
+    if(argumentList.length() != 2 ){
+        return;
+    }
+    QString fn = argumentList.at(1);
+    openSession(fn);
+}
 #endif
 
-void MainWindow::on_actionDisplay_PDF_triggered()
-{
-    on_toolButtonViewPDF_clicked();
+#ifdef Q_OS_MAC
+void MainWindow::connectOpenWithApp(MyApplication *app){
+
+    connect(app, SIGNAL(fileReady(QString)),this,SLOT(openSession(QString)));
+    //connect(app, &MyApplication::fileReady,[this] (QString fileName){openSession(fileName);});
 }
 
+#endif

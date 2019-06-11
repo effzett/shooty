@@ -12,13 +12,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += app_bundle
 
-macx: {
-ICON = shooty1.icns
-}
-win32: {
-RC_FILE = shooty.rc
-}
-
 TARGET = Shooty
 TEMPLATE = app
 
@@ -44,13 +37,18 @@ HEADERS  += mainwindow.h \
     configdaten.h \
     pdfdaten.h \
     session.h \
-    serial.h
+    serial.h \
+    myapplication.h
 
 macx: {
 FORMS    += mainwindow.ui \
             einstellungen.ui \
             serial.ui
     message("MacOS Architektur")
+
+ICON = shooty1.icns
+
+QMAKE_INFO_PLIST += myShooty.plist
 }
 
 win32: {
@@ -58,6 +56,8 @@ FORMS    += mainwindowwin.ui \
             einstellungenwin.ui \
             serialwin.ui
     message("Win32 Architektur")
+
+RC_FILE = shooty.rc
 }
 
 RESOURCES += \
@@ -66,4 +66,5 @@ RESOURCES += \
 
 DISTFILES += \
     shooty.ico \
-    shooty.rc
+    shooty.rc \
+    myShooty.plist

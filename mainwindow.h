@@ -27,6 +27,7 @@
 #include <statistic.h>
 #include <serial.h>
 #include <configdaten.h>
+#include <myapplication.h>
 
 namespace Ui {
 class MainWindow;
@@ -43,6 +44,11 @@ public:
 
 signals:
     void deleteCalibrationLine();
+
+#ifdef Q_OS_MAC
+public slots:
+    void connectOpenWithApp(MyApplication *app);
+#endif
 
 private slots:
 
@@ -93,9 +99,11 @@ private slots:
     void makePDF(QString fn);
     void on_toolButtonViewPDF_clicked();
     void on_actionDisplay_PDF_triggered();
+    void openSession(QString fileName);
 
 #ifdef Q_OS_WIN
     void on_actionBeenden_triggered();
+    void fromCommandLine();
 #endif
 
 
