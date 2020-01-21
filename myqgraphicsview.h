@@ -13,7 +13,7 @@ class MyQGraphicsView : public QGraphicsView
 {
     Q_OBJECT
 public:
-    explicit MyQGraphicsView(QWidget *parent = 0);
+    explicit MyQGraphicsView(QWidget *parent = nullptr);
     void setMouseClickForShots(bool);
 signals:
     void centerTargetSignal(QPointF);

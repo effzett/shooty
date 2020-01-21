@@ -143,7 +143,7 @@ private:
 
 
     QString         m_sessionTitle;     // Name der Session
-    QString         m_version= "1.4";  // Nur hier wird die Version bestimmt !!!!!
+    QString         m_version= "1.5";  // Nur hier wird die Version bestimmt !!!!!
 
 
 };

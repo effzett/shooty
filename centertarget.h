@@ -9,7 +9,7 @@
 class CenterTarget : public QGraphicsItem
 {
 public:
-    CenterTarget(QGraphicsItem* parent = 0);
+    CenterTarget(QGraphicsItem* parent = nullptr);
 
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);

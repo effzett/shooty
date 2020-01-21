@@ -15,7 +15,7 @@ class Session : public QObject
 {
     Q_OBJECT
 public:
-    explicit Session(QObject *parent = 0);
+    explicit Session(QObject *parent = nullptr);
 
 signals:
 

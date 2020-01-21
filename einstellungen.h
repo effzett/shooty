@@ -13,7 +13,7 @@ class Einstellungen : public QDialog
     Q_OBJECT
 
 public:
-    explicit Einstellungen(QWidget *parent = 0);
+    explicit Einstellungen(QWidget *parent = nullptr);
     ~Einstellungen();
 
     ConfigDaten *getData();

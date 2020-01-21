@@ -12,7 +12,7 @@ class Serial : public QDialog
     Q_OBJECT
 
 public:
-    explicit Serial(QWidget *parent = 0);
+    explicit Serial(QWidget *parent = nullptr);
     ~Serial();
     void setData(ConfigDaten *cfg);
     void getData(ConfigDaten *cfg);

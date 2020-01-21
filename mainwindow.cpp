@@ -794,7 +794,7 @@ void MainWindow::saveSettings(){
 
 void MainWindow::checkRegistration(){
     QDate currDate = QDate::currentDate();
-    if(currDate> QDate(2019,12,31) && !m_isRegistered){
+    if(currDate> QDate(2020,12,31) && !m_isRegistered){
         QMessageBox msgBox;
         msgBox.setText("Dies ist eine Test-Version von Shooty!!\nWenn Sie dieses Programm verwenden möchten, wenden Sie sich an fz@zenmeister.de für eine kostenlose und neuere Version und Seriennummer von Shooty.");
         msgBox.exec();
