@@ -59,8 +59,8 @@ void MainWindow::setGUIValues(){
 
     // create objects for the label and progress bar
     m_statusLabel = new QLabel(this);
-    QFont f( "Helvetica Neue", 10);
-    m_statusLabel->setFont(f);
+//    QFont f( "Helvetica Neue", 10);
+//    m_statusLabel->setFont(f);
     m_statusProgressBar = new QProgressBar(this);
 
     // set text for the label
