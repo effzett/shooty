@@ -302,7 +302,8 @@ void MainWindow::fillQLists(QList<QPointF> allShots)
         //erforderlich:
         realPoint = transformScene2Real(point);
         QString str;
-        str.sprintf("%8.2f  %8.2f     %8.2f   %8.2f°",realPoint.x(),realPoint.y(),sqrt(pow(realPoint.x(), 2) + pow(realPoint.y(), 2)),qRadiansToDegrees(qAtan2(realPoint.y(),realPoint.x())));
+//        str.sprintf("%8.2f  %8.2f     %8.2f   %8.2f°",realPoint.x(),realPoint.y(),sqrt(pow(realPoint.x(), 2) + pow(realPoint.y(), 2)),qRadiansToDegrees(qAtan2(realPoint.y(),realPoint.x())));
+        str = QString("%1  %2     %3   %4").arg(realPoint.x(),8,'f',2).arg(realPoint.y(),8,'f',2).arg(sqrt(pow(realPoint.x(), 2) + pow(realPoint.y(), 2)),8,'f',2).arg(qRadiansToDegrees(qAtan2(realPoint.y(),realPoint.x())),8,'f',2);
         QListWidgetItem *itemReal = new QListWidgetItem();
         itemReal->setText(str);
         ui->listWidgetReal->addItem(itemReal);
@@ -329,7 +330,7 @@ QPointF MainWindow::transformScene2Real(QPointF scenePoint)
     realPoint.setY(-realPoint.y());
 
     // Drehen
-    QPointF pp;
+    //QPointF pp;
     qreal x = realPoint.x() * qCos(qDegreesToRadians(1.0*m_angle)) + realPoint.y() * qSin(qDegreesToRadians(1.0*m_angle));
     qreal y = -realPoint.x() * qSin(qDegreesToRadians(1.0*m_angle)) + realPoint.y() * qCos(qDegreesToRadians(1.0*m_angle));
     realPoint.setX(x);
@@ -390,10 +391,12 @@ void MainWindow::calc()
     bool parsingOK=false;
     anzahl = ui->lineEdit_ShotCount->text().toDouble(&parsingOK);
     if(parsingOK){
-        text.sprintf("%4.0f   Treffer",anzahl);
+//        text.sprintf("%4.0f   Treffer",anzahl);
+            text = QString("%1").arg(anzahl,4,'f',0);
     }
     else{
-        text.sprintf("%4.0f   Treffer",0.0);
+//        text.sprintf("%4.0f   Treffer",0.0);
+        text = QString("%1").arg(0.0,4,'f',0);
     }
 
     ui->label_AnzahlValue->setText(text);
@@ -409,7 +412,8 @@ void MainWindow::calc()
             rings = values->rings(ringDistance,m_caliber2);
         }
     }
-    text.sprintf("%4.0f   Ringe",rings);
+//    text.sprintf("%4.0f   Ringe",rings);
+    text = QString("%1").arg(rings,4,'f',0);
     ui->label_RingeValue->setText(text);
 
 
@@ -423,7 +427,8 @@ void MainWindow::calc()
         moa = qRadiansToDegrees(qAtan(meanRadius/m_distance))*60.;
         smoa = moa * 0.955555;
     }
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", meanRadius, moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", meanRadius, moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(meanRadius,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     ui->label_MittlRadiusValue->setText(text);
 
     // Mean arithmetig radius COI*******************************************************
@@ -436,7 +441,8 @@ void MainWindow::calc()
         moa = qRadiansToDegrees(qAtan(meanRadiusC/m_distance))*60.;
         smoa = moa * 0.955555;
     }
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", meanRadiusC, moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", meanRadiusC, moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(meanRadiusC,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     m_circleR = meanRadiusC;
     ui->label_MittlRadiusValueC->setText(text);
 
@@ -459,9 +465,12 @@ void MainWindow::calc()
         moa = qRadiansToDegrees(qAtan(len/m_distance))*60.;
         smoa = moa * 0.955555;
     }
-    strX.sprintf("%6.1f mm       ( %-6.1f/%6.1f )",shotGroupCenter.x(),moaX,smoaX);
-    strY.sprintf("%6.1f mm       ( %-6.1f/%6.1f )",shotGroupCenter.y(),moaY,smoaY);
-    strR.sprintf("%6.1f mm,%4.0f° ( %-6.1f/%6.1f )",len,phi,moa,smoa);
+//    strX.sprintf("%6.1f mm       ( %-6.1f/%6.1f )",shotGroupCenter.x(),moaX,smoaX);
+    strX  = QString("%1 mm       ( %2/%3 )").arg(shotGroupCenter.x(),6,'f',1).arg(moaX,-6,'f',1).arg(smoaX,6,'f',1);
+//    strY.sprintf("%6.1f mm       ( %-6.1f/%6.1f )",shotGroupCenter.y(),moaY,smoaY);
+    strY  = QString("%1 mm       ( %2/%3 )").arg(shotGroupCenter.y(),6,'f',1).arg(moaY,-6,'f',1).arg(smoaY,6,'f',1);
+//    strR.sprintf("%6.1f mm,%4.0f° ( %-6.1f/%6.1f )",len,phi,moa,smoa);
+    strR  = QString("%1 mm,%2° ( %3/%4 )").arg(len,6,'f',1).arg(phi,4,'f',0).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     ui->label_ShotGroupXValue->setText(strX);
     ui->label_ShotGroupYValue->setText(strY);
     ui->label_ShotGroup2Value->setText(strR);
@@ -489,7 +498,8 @@ void MainWindow::calc()
         moa = qRadiansToDegrees(qAtan(sigmaC/m_distance))*60.;
         smoa = moa * 0.955555;
     }
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", sigmaC,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", sigmaC,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(sigmaC,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     m_circleSigma = sigmaC;
     ui->label_SigmaValueC->setText(text);
 
@@ -534,17 +544,20 @@ void MainWindow::calc()
     }
     moa = qRadiansToDegrees(qAtan(cep50C/m_distance))*60.;
     smoa = moa * 0.955555;
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", cep50C,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", cep50C,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(cep50C,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     m_circleCEP50 = cep50C;
     ui->label_CEP50ValueC->setText(text);
     moa = qRadiansToDegrees(qAtan(cep90C/m_distance))*60.;
     smoa = moa * 0.955555;
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", cep90C,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", cep90C,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(cep90C,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     m_circleCEP90 = cep90C;
     ui->label_CEP90ValueC->setText(text);
     moa = qRadiansToDegrees(qAtan(cep95C/m_distance))*60.;
     smoa = moa * 0.955555;
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", cep95C,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", cep95C,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(cep95C,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     m_circleCEP95 = cep95C;
     ui->label_CEP95ValueC->setText(text);
 
@@ -561,7 +574,8 @@ void MainWindow::calc()
         moa = qRadiansToDegrees(qAtan(lineLen/m_distance))*60.;
         smoa = moa * 0.955555;
     }
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", lineLen,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", lineLen,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(lineLen,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     ui->label_DiagonaleValue->setText(text);
 
     // Max H Max W FOM *****************************************************************
@@ -578,11 +592,13 @@ void MainWindow::calc()
     }
     moa = qRadiansToDegrees(qAtan(height/m_distance))*60.;
     smoa = moa * 0.955555;
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", height,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", height,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(height,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     ui->label_MaxHoeheValue->setText(text);
     moa = qRadiansToDegrees(qAtan(width/m_distance))*60.;
     smoa = moa * 0.955555;
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", width,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", width,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(width,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     ui->label_MaxBreiteValue->setText(text);
     // FOM ***************************************************************************
     // nur 2 Treffer
@@ -594,7 +610,8 @@ void MainWindow::calc()
     }
     moa = qRadiansToDegrees(qAtan(fom/m_distance))*60.;
     smoa = moa * 0.955555;
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", fom,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", fom,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(fom,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     ui->label_FOMValue->setText(text);
 
     // Extreme spread ******************************************************************
@@ -609,7 +626,8 @@ void MainWindow::calc()
     }
     moa = qRadiansToDegrees(qAtan(lineLen/m_distance))*60.;
     smoa = moa * 0.955555;
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", lineLen,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", lineLen,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(lineLen,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     ui->label_ExtremeSpreadValue->setText(text);
 
 
@@ -654,15 +672,18 @@ void MainWindow::calc()
     }
     moa = qRadiansToDegrees(qAtan(stdabwXC/m_distance))*60.;
     smoa = moa * 0.955555;
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", stdabwXC,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", stdabwXC,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(stdabwXC,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     ui->label_StdAbwXValueC->setText(text);
     moa = qRadiansToDegrees(qAtan(stdabwYC/m_distance))*60.;
     smoa = moa * 0.955555;
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", stdabwYC,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", stdabwYC,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(stdabwYC,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     ui->label_StdAbwYValueC->setText(text);
     moa = qRadiansToDegrees(qAtan(rdsC/m_distance))*60.;
     smoa = moa * 0.955555;
-    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", rdsC,moa,smoa);
+//    text.sprintf("%6.1f mm       ( %-6.1f/%6.1f )", rdsC,moa,smoa);
+    text  = QString("%1 mm       ( %2/%3 )").arg(rdsC,6,'f',1).arg(moa,-6,'f',1).arg(smoa,6,'f',1);
     ui->label_RDSValueC->setText(text);
 }
 
@@ -866,7 +887,8 @@ void MainWindow::on_actionAls_CSV_exportieren_triggered()
             y = p.y();
             r = qSqrt(x*x + y*y);
             phi = qAtan2(y,x)*180 / 3.141592;
-            str.sprintf("%4d ; %6.1f ; %6.1f ; %6.1f ; %6.1f\n",n, x,y,r,phi);
+ //           str.sprintf("%4d ; %6.1f ; %6.1f ; %6.1f ; %6.1f\n",n, x,y,r,phi);
+            str = QString("%1 ; %2 ; %3 ; %4 ; %5").arg(n,4,10).arg(x,6,'f',1).arg(y,6,'f',1).arg(r,6,'f',1).arg(phi,6,'f',1);
             output <<  str;
             n++;
         }
@@ -942,8 +964,9 @@ void MainWindow::on_actionSichern_unter_triggered()
     int i=0;
     foreach(QPointF p , itemList){
         QString txt;
-        txt.sprintf("%d: %6.1f %6.1f",i++,p.x(),p.y());
-        qDebug(txt.toLatin1());
+//        txt.sprintf("%d: %6.1f %6.1f",i++,p.x(),p.y());
+        txt = QString("%1: %2 %3").arg(i++,5,10).arg(p.x(),6,'f',1).arg(p.y(),6,'f',1);
+        qDebug("%s",qUtf8Printable(txt));
     }
 
     Session *session = new Session(this);
@@ -1008,8 +1031,9 @@ void MainWindow::openSession(QString fileName){
     int i=0;
     foreach(QPointF p , liste){
         QString txt;
-        txt.sprintf("%d: %6.1f %6.1f",i++,p.x(),p.y());
-        qDebug(txt.toLatin1());
+//        txt.sprintf("%d: %6.1f %6.1f",i++,p.x(),p.y());
+        txt = QString("%1: %2 %3").arg(i++,5,10).arg(p.x(),6,'f',1).arg(p.y(),6,'f',1);
+        qDebug("%s",qUtf8Printable(txt));
     }
 
     m_scene = ui->graphicsView->scene();
