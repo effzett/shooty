@@ -149,10 +149,12 @@ void MainWindow::setResetButtonEnabled()
 void MainWindow::setupMatrix()
 {
     qreal scale = qPow(qreal(2), (ui->zoomSlider->value()-250)/qreal(50));
-    QMatrix matrix;
+    QTransform matrix;
+//5    QMatrix matrix;
     matrix.scale(scale,scale);
     matrix.rotate(ui->rotateSlider->value());
-    ui->graphicsView->setMatrix(matrix);
+//5    ui->graphicsView->setMatrix(matrix);
+    ui->graphicsView->setTransform(matrix);
     setResetButtonEnabled();
 }
 
