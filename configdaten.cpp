@@ -41,6 +41,6 @@ ConfigDaten::ConfigDaten()
     m_circleCEP95       = false;
     m_circleRinge       = false;
 
-    m_regName="";
-    m_regSerial="";
+    m_regName="Testversion";
+    m_regSerial="33293f853be99472";
 }
